@@ -17,7 +17,7 @@ public class InventoryManager {
     Scanner scanner = new Scanner(System.in);
     DressManager dressManager = new DressManager();
     
-    public InventoryManager() {
+    public void InventoryManager() {
         dressList = new ArrayList<>();
     }
     
@@ -80,9 +80,6 @@ public class InventoryManager {
         }
     }
 
-    /**
-     * @return the dressList
-     */
     public List<Dress> getDressList() {
         return dressList;
     }

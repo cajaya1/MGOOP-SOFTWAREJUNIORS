@@ -1,19 +1,36 @@
 package ec.edu.espe.BethsabeBoutique.controller;
-
+import ec.edu.espe.BethsabeBoutique.controller.InventoryManager;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ec.edu.espe.BethsabeBoutique.model.Dress;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
  * @author Caetano Flores, Juniors, DCCO-ESPE
  */
 public class FileManager {
-    public void createJson() {
+    
         
+    public void createJson(List<Dress> dressList, String reportName){
+        
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(dressList);
+
+        try (FileWriter fileWriter = new FileWriter("output.json")) {
+            fileWriter.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+            
+
+        System.out.println("Se ha creado el reporte con éxito");
     }
+    
     
     public void createCsv(List<Dress> dressList, String reportName) {
         //Creates the folder "Reportes" in root 

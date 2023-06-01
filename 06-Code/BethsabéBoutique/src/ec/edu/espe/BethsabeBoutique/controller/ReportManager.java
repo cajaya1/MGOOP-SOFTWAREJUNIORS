@@ -17,5 +17,6 @@ public class ReportManager {
         System.out.println("Ingrese el nombre del reporte: ");
         reportName = scanner.next();
         fileManager.createCsv(dressList, reportName);
+        fileManager.createJson(dressList, reportName);
     }
 }

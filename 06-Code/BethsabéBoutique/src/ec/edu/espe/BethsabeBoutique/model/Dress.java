@@ -46,7 +46,7 @@ public class Dress {
     private String size;
     private int quantity;
     private LocalDate dateReceived;
-    private LocalDate dateSold;
+    //private LocalDate dateSold;
     
     public Dress(String name, String brand, String size, int quantity) {
         this.name = name;
@@ -67,13 +67,13 @@ public class Dress {
         this.dateReceived = dateReceived;
     }
 
-    public LocalDate getDateSold() {
+    /*public LocalDate getDateSold() {
         return dateSold;
-    }
+    }*/
 
-    public void setDateSold(LocalDate dateSold) {
+    /*public void setDateSold(LocalDate dateSold) {
         this.dateSold = dateSold;
-    }
+    }*/
 }
 
 

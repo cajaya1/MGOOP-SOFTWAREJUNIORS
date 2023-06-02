@@ -2,6 +2,7 @@
 package ec.edu.espe.BethsabeBoutique.controller;
 
 import ec.edu.espe.BethsabeBoutique.model.Dress;
+import ec.edu.espe.BethsabeBoutique.view.BethsabéBoutique;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -13,11 +14,12 @@ import java.util.Scanner;
 
 
 public class InventoryManager {
-    private List<Dress> dressList;
+    private ArrayList<Dress> dressList;
     Scanner scanner = new Scanner(System.in);
     DressManager dressManager = new DressManager();
+    FileManager fileManager = new FileManager();
     
-    public void InventoryManager() {
+    public InventoryManager() {
         dressList = new ArrayList<>();
     }
     
@@ -28,6 +30,7 @@ public class InventoryManager {
         Dress dress = dressManager.getDressInformation();
         dress.setDateReceived(LocalDate.now());
         getDressList().add(dress);
+        fileManager.createJson(dressList);
     }
     
     public void editDress() {
@@ -51,19 +54,28 @@ public class InventoryManager {
     
     public void deleteDress() {
         String name = dressManager.getDressName();
+        boolean dressFounded = false;
         
         for (Dress dress : getDressList()) {
             if (dress.getName().equalsIgnoreCase(name)) {
                 getDressList().remove(dress);
                 System.out.println("Vestido -"+dress.getName()+"- Eliminado");
+                dressFounded = true;
             }
         }
-        //In case theres no dress with that name in dressList:
-        System.err.println("No hay ningun vestido con el nombre: "+name+" en la base de datos");
-        System.out.println("Revise que el nombre este escrito correctamente");
+        if(dressFounded == false){
+            System.err.println("No hay ningun vestido con el nombre: "+name+" en la base de datos");
+            System.out.println("Revise que el nombre este escrito correctamente");
+        }else{
+            fileManager.createJson(dressList);
+        }
+        
     }
     
     public void displayDressList() {
+        dressList.clear();
+        dressList = fileManager.loadJson(dressList);
+        
         System.out.println("Inventario de vestidos: ");
         System.out.println("-----------------");
         
@@ -80,7 +92,10 @@ public class InventoryManager {
         }
     }
 
-    public List<Dress> getDressList() {
+    /**
+     * @return the dressList
+     */
+    public ArrayList<Dress> getDressList() {
         return dressList;
     }
 }

@@ -24,6 +24,9 @@ public class DressManager {
         System.out.print("Ingrese las medidas del vestido: ");
         String size = scanner.next();
         
+        System.out.print("Ingrese el precio del vestido: ");
+        float price = scanner.nextFloat();
+        
         System.out.print("Ingrese la cantidad de vestidos: ");
         int quantity = scanner.nextInt();
         

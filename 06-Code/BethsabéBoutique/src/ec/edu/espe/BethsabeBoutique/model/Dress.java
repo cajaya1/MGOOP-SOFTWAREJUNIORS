@@ -44,6 +44,7 @@ public class Dress {
     private String name;
     private String brand;
     private String size;
+    private float price;
     private int quantity;
     private LocalDate dateReceived;
     //private LocalDate dateSold;
@@ -74,6 +75,20 @@ public class Dress {
     /*public void setDateSold(LocalDate dateSold) {
         this.dateSold = dateSold;
     }*/
+
+    /**
+     * @return the price
+     */
+    public float getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(float price) {
+        this.price = price;
+    }
 }
 
 

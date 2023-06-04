@@ -12,18 +12,16 @@ import java.util.Scanner;
 
 
 public class InventoryManager {
-    private ArrayList<Dress> dressList;
+    private ArrayList<Dress> dressList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     DressManager dressManager = new DressManager();
     FileManager fileManager = new FileManager();
     
     public InventoryManager() {
-        dressList = new ArrayList<>();
+        dressList = fileManager.loadJson(dressList);
     }
     
     public void addDress() {
-        String name, brand, size;
-        int quantity;
         
         Dress dress = dressManager.getDressInformation();
         dress.setDateReceived(LocalDate.now());
@@ -32,7 +30,7 @@ public class InventoryManager {
     }
     
     public void editDress() {
-        Dress dress = dressManager.searchDress(getDressList());
+        Dress dress = dressManager.searchDress();
         if (dress != null) {
             Dress updatedDress = dressManager.getUpdatedDressInformation();
             dress.setName(updatedDress.getName());
@@ -44,7 +42,7 @@ public class InventoryManager {
     }
     
     public void deleteDress() {
-        Dress dress = dressManager.searchDress(getDressList());
+        Dress dress = dressManager.searchDress();
         if (dress != null) {
             getDressList().remove(dress);
             System.out.println("Vestido -"+dress.getName()+"- Eliminado");
@@ -53,17 +51,6 @@ public class InventoryManager {
 
     }
     
-    public void sellDress() {
-        ShopingCart shopingCart = new ShopingCart();
-        
-        Dress dress = dressManager.searchDress(getDressList());
-        System.out.println("Ingrese la cantidad: ");
-        int quantity = scanner.nextInt();
-        
-        if (dress != null) {
-            shopingCart.addToCart(dress, quantity);
-            }
-        }
     
     public void displayDressList() {
         dressList.clear();

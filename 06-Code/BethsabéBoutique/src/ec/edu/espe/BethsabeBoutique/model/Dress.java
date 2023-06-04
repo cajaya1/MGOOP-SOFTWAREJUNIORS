@@ -49,10 +49,11 @@ public class Dress {
     private LocalDate dateReceived;
     //private LocalDate dateSold;
     
-    public Dress(String name, String brand, String size, int quantity) {
+    public Dress(String name, String brand, String size, float price, int quantity) {
         this.name = name;
         this.brand = brand;
         this.size = size;
+        this.price = price;
         this.quantity = quantity;
     }
     

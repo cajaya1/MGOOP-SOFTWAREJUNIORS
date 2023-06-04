@@ -14,6 +14,12 @@ import java.util.Scanner;
  */
 public class DressManager {
     Scanner scanner = new Scanner(System.in);
+    FileManager fileManager = new FileManager();
+    ArrayList<Dress> dressList;
+    
+    public DressManager() {
+        dressList = new ArrayList<>();
+    }
     
     public Dress getDressInformation() {
         System.out.print("Ingrese el nombre del vestido: ");
@@ -27,16 +33,17 @@ public class DressManager {
         
         System.out.print("Ingrese el precio del vestido: ");
         float price = scanner.nextFloat();
-        
+
         System.out.print("Ingrese la cantidad de vestidos: ");
         int quantity = scanner.nextInt();
         
-        return new Dress(name, brand, size, quantity);
+        return new Dress(name, brand, size, price, quantity);
     }
     
     
     
-    public Dress searchDress(ArrayList<Dress> dressList) {
+    public Dress searchDress() {
+        dressList = fileManager.loadJson(dressList);
         System.out.print("Ingrese el nombre del vestido: ");
         String name = scanner.next();
         boolean dressFounded = false;
@@ -64,9 +71,12 @@ public class DressManager {
         System.out.print("Enter New Dress Size: ");
         String size = scanner.next();
         
+        System.out.print("Enter New Price: ");
+        float price = scanner.nextFloat();
+        
         System.out.print("Enter New Dress Quantity: ");
         int quantity = scanner.nextInt();
         
-        return new Dress(name, brand, size, quantity);
+        return new Dress(name, brand, size, price, quantity);
     }
 }

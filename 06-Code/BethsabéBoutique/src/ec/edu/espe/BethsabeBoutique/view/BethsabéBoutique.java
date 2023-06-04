@@ -2,6 +2,7 @@ package ec.edu.espe.BethsabeBoutique.view;
 import ec.edu.espe.BethsabeBoutique.controller.InventoryManager;
 import ec.edu.espe.BethsabeBoutique.controller.ReportManager;
 import ec.edu.espe.BethsabeBoutique.controller.ShopingCart;
+
 /**
  *
  * @author Carlos Jaya,Software Juniors, DCOO-ESPE
@@ -49,7 +50,8 @@ public class BethsabéBoutique {
     }
     
     public void displaySalesMenu() {
-        int menuOption;    
+        System.out.println(shopingCart.getCart());
+            int menuOption;    
             System.out.println("\nVENTAS");
             System.out.println("--------------------");
             System.out.println("1. Añadir vestido al carrito de compras");
@@ -61,7 +63,7 @@ public class BethsabéBoutique {
             switch (menuOption) {
 
                 case 0 -> System.out.println("Saliendo del menu...\n");
-                case 1 -> inventory.sellDress();
+                case 1 -> shopingCart.addToCart();
                 case 2 -> shopingCart.removeFromCart();
                 case 3 -> shopingCart.printShopingCart();
                 default -> System.err.println("Opcion invalida, ingrese un numero del 0 al 5\n");

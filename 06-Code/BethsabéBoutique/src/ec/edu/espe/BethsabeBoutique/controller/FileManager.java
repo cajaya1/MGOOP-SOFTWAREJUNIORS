@@ -6,6 +6,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import ec.edu.espe.BethsabeBoutique.model.Customer;
 import ec.edu.espe.BethsabeBoutique.model.Dress;
 import java.io.File;
 import java.io.FileReader;
@@ -94,6 +95,10 @@ public class FileManager {
                 
             }
         }
+    }
+    
+    public void createBill(){
+        
     }
     
     

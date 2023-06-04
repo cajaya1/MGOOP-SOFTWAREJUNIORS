@@ -2,8 +2,6 @@
 package ec.edu.espe.BethsabeBoutique.controller;
 
 import ec.edu.espe.BethsabeBoutique.model.Dress;
-import ec.edu.espe.BethsabeBoutique.view.BethsabéBoutique;
-import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -34,43 +32,38 @@ public class InventoryManager {
     }
     
     public void editDress() {
-        String name = dressManager.getDressName();
-        
-        for (Dress dress : getDressList()) {
-            if (dress.getName().equalsIgnoreCase(name)) {
-                Dress updatedDress = dressManager.getUpdatedDressInformation();
-                dress.setName(updatedDress.getName());
-                dress.setBrand(updatedDress.getBrand());
-                dress.setSize(updatedDress.getSize());
-                dress.setQuantity(updatedDress.getQuantity());
-                System.out.println("Vestido -"+dress.getName()+"- editado exitosamente");
-                return;
+        Dress dress = dressManager.searchDress(getDressList());
+        if (dress != null) {
+            Dress updatedDress = dressManager.getUpdatedDressInformation();
+            dress.setName(updatedDress.getName());
+            dress.setBrand(updatedDress.getBrand());
+            dress.setSize(updatedDress.getSize());
+            dress.setQuantity(updatedDress.getQuantity());
+            System.out.println("Vestido -"+dress.getName()+"- editado exitosamente");
             }
-        }
-        //In case theres no dress with that name in dressList:
-        System.err.println("No hay ningun vestido con el nombre: "+name+" en la base de datos");
-        System.out.println("Revise que el nombre este escrito correctamente");
     }
     
     public void deleteDress() {
-        String name = dressManager.getDressName();
-        boolean dressFounded = false;
-        
-        for (Dress dress : getDressList()) {
-            if (dress.getName().equalsIgnoreCase(name)) {
-                getDressList().remove(dress);
-                System.out.println("Vestido -"+dress.getName()+"- Eliminado");
-                dressFounded = true;
-            }
-        }
-        if(dressFounded == false){
-            System.err.println("No hay ningun vestido con el nombre: "+name+" en la base de datos");
-            System.out.println("Revise que el nombre este escrito correctamente");
-        }else{
+        Dress dress = dressManager.searchDress(getDressList());
+        if (dress != null) {
+            getDressList().remove(dress);
+            System.out.println("Vestido -"+dress.getName()+"- Eliminado");
             fileManager.createJson(dressList);
         }
-        
+
     }
+    
+    public void sellDress() {
+        ShopingCart shopingCart = new ShopingCart();
+        
+        Dress dress = dressManager.searchDress(getDressList());
+        System.out.println("Ingrese la cantidad: ");
+        int quantity = scanner.nextInt();
+        
+        if (dress != null) {
+            shopingCart.addToCart(dress, quantity);
+            }
+        }
     
     public void displayDressList() {
         dressList.clear();

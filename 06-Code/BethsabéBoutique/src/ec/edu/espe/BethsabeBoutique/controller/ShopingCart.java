@@ -36,6 +36,7 @@ public class ShopingCart {
             }
             getCart().add(dress);
             System.out.println("Vestido: "+dress.getName()+" añadido correctamente");
+            
         }
     }
     
@@ -104,7 +105,7 @@ public class ShopingCart {
         System.out.println("2.SALIR");
         option = scanner.nextInt();
         switch (option) {
-            case 1 -> salesManager.createSale(cart);
+            case 1 -> salesManager.createSale(cart, totalPrice, taxes);
             case 2 -> System.out.println("");
             default -> System.err.println("Opcion Incorrecta, escoja un numero del 1 al 2");
         }

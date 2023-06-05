@@ -12,8 +12,9 @@ import java.util.Scanner;
 public class SalesManager {
     Scanner scanner = new Scanner(System.in);
     InventoryManager inventoryManager = new InventoryManager();
+    BillingSystem billingSystem = new BillingSystem();
     
-    public void createSale(ArrayList<Dress> cart){
+    public void createSale(ArrayList<Dress> cart, float totalPrice, float taxes){
         String name, email, idCard;
         
         System.out.print("Ingrese nombre del cliente: ");
@@ -25,12 +26,9 @@ public class SalesManager {
         
         Customer customer = new Customer(name, email, idCard);
         for(Dress dressOnCart : cart) {
-            System.err.println("asdasdasdasdasd");
             for(Dress dressOnInventory : inventoryManager.getDressList()){
-                System.out.println("DRESEES::::"+dressOnCart +"------"+dressOnInventory);
                 if(dressOnCart.getName().equalsIgnoreCase(dressOnInventory.getName())) {
                     int quantity = dressOnInventory.getQuantity()-dressOnCart.getQuantity();
-                    System.out.println("CANTIDAD::::::"+quantity);
                     if (quantity == 0)
                         inventoryManager.getDressList().remove(dressOnInventory);
                     else
@@ -41,7 +39,7 @@ public class SalesManager {
             
         }
         
-        
+        billingSystem.createBill(cart, customer, totalPrice, taxes);
         
     }
     

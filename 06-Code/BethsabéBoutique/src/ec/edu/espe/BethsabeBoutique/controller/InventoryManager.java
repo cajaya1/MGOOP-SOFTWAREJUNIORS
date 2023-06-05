@@ -38,7 +38,7 @@ public class InventoryManager {
             dress.setSize(updatedDress.getSize());
             dress.setQuantity(updatedDress.getQuantity());
             System.out.println("Vestido -"+dress.getName()+"- editado exitosamente");
-            }
+        }
     }
     
     public void deleteDress() {

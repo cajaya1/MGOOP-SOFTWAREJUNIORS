@@ -46,8 +46,6 @@ public class FileManager {
             e.printStackTrace();
         }
             
-
-        System.out.println("Se ha creado el reporte con éxito");
     }
     
     public ArrayList<Dress> loadJson(ArrayList<Dress> dressList) {

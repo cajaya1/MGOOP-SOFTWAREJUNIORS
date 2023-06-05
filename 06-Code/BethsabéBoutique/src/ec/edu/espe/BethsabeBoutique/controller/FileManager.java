@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Caetano Flores, Juniors, DCCO-ESPE
+ * @author Caetano Flores, Juniors, DCCO-ESPE, Alexander Jumbo
  */
 public class FileManager {
     

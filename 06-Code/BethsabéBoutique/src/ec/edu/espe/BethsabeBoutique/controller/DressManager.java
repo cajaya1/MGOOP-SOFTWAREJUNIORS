@@ -5,6 +5,7 @@
 package ec.edu.espe.BethsabeBoutique.controller;
 
 import ec.edu.espe.BethsabeBoutique.model.Dress;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,6 +14,12 @@ import java.util.Scanner;
  */
 public class DressManager {
     Scanner scanner = new Scanner(System.in);
+    FileManager fileManager = new FileManager();
+    ArrayList<Dress> dressList;
+    
+    public DressManager() {
+        dressList = new ArrayList<>();
+    }
     
     public Dress getDressInformation() {
         System.out.print("Ingrese el nombre del vestido: ");
@@ -24,17 +31,34 @@ public class DressManager {
         System.out.print("Ingrese las medidas del vestido: ");
         String size = scanner.next();
         
+        System.out.print("Ingrese el precio del vestido: ");
+        float price = scanner.nextFloat();
+
         System.out.print("Ingrese la cantidad de vestidos: ");
         int quantity = scanner.nextInt();
         
-        return new Dress(name, brand, size, quantity);
+        return new Dress(name, brand, size, price, quantity);
     }
     
     
     
-    public String getDressName() {
+    public Dress searchDress() {
+        dressList = fileManager.loadJson(dressList);
         System.out.print("Ingrese el nombre del vestido: ");
-        return scanner.next();
+        String name = scanner.next();
+        boolean dressFounded = false;
+        
+        for (Dress dressToSearch : dressList) {
+            if (dressToSearch.getName().equalsIgnoreCase(name)) {
+                dressFounded = true;
+                return dressToSearch;
+            }
+        }
+        if (dressFounded == false) {
+            System.err.println("No hay ningun vestido con el nombre: "+name+" en la base de datos");
+            System.out.println("Revise que el nombre este escrito correctamente e intelo nuevamente");
+        }
+        return null;
     }
     
     public Dress getUpdatedDressInformation() {
@@ -47,9 +71,12 @@ public class DressManager {
         System.out.print("Enter New Dress Size: ");
         String size = scanner.next();
         
+        System.out.print("Enter New Price: ");
+        float price = scanner.nextFloat();
+        
         System.out.print("Enter New Dress Quantity: ");
         int quantity = scanner.nextInt();
         
-        return new Dress(name, brand, size, quantity);
+        return new Dress(name, brand, size, price, quantity);
     }
 }

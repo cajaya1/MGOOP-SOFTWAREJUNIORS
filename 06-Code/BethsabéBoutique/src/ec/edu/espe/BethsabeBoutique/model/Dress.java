@@ -44,14 +44,16 @@ public class Dress {
     private String name;
     private String brand;
     private String size;
+    private float price;
     private int quantity;
     private LocalDate dateReceived;
-    private LocalDate dateSold;
+    //private LocalDate dateSold;
     
-    public Dress(String name, String brand, String size, int quantity) {
+    public Dress(String name, String brand, String size, float price, int quantity) {
         this.name = name;
         this.brand = brand;
         this.size = size;
+        this.price = price;
         this.quantity = quantity;
     }
     
@@ -67,12 +69,26 @@ public class Dress {
         this.dateReceived = dateReceived;
     }
 
-    public LocalDate getDateSold() {
+    /*public LocalDate getDateSold() {
         return dateSold;
+    }*/
+
+    /*public void setDateSold(LocalDate dateSold) {
+        this.dateSold = dateSold;
+    }*/
+
+    /**
+     * @return the price
+     */
+    public float getPrice() {
+        return price;
     }
 
-    public void setDateSold(LocalDate dateSold) {
-        this.dateSold = dateSold;
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(float price) {
+        this.price = price;
     }
 }
 

@@ -2,7 +2,6 @@
 package ec.edu.espe.BethsabeBoutique.controller;
 
 import ec.edu.espe.BethsabeBoutique.model.Dress;
-import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -13,57 +12,50 @@ import java.util.Scanner;
 
 
 public class InventoryManager {
-    private List<Dress> dressList;
+    private ArrayList<Dress> dressList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     DressManager dressManager = new DressManager();
+    FileManager fileManager = new FileManager();
     
-    public void InventoryManager() {
-        dressList = new ArrayList<>();
+    public InventoryManager() {
+        dressList = fileManager.loadJson(dressList);
     }
     
     public void addDress() {
-        String name, brand, size;
-        int quantity;
         
         Dress dress = dressManager.getDressInformation();
         dress.setDateReceived(LocalDate.now());
         getDressList().add(dress);
+        fileManager.createJson(dressList);
     }
     
     public void editDress() {
-        String name = dressManager.getDressName();
-        
-        for (Dress dress : getDressList()) {
-            if (dress.getName().equalsIgnoreCase(name)) {
-                Dress updatedDress = dressManager.getUpdatedDressInformation();
-                dress.setName(updatedDress.getName());
-                dress.setBrand(updatedDress.getBrand());
-                dress.setSize(updatedDress.getSize());
-                dress.setQuantity(updatedDress.getQuantity());
-                System.out.println("Vestido -"+dress.getName()+"- editado exitosamente");
-                return;
-            }
+        Dress dress = dressManager.searchDress();
+        if (dress != null) {
+            Dress updatedDress = dressManager.getUpdatedDressInformation();
+            dress.setName(updatedDress.getName());
+            dress.setBrand(updatedDress.getBrand());
+            dress.setSize(updatedDress.getSize());
+            dress.setQuantity(updatedDress.getQuantity());
+            System.out.println("Vestido -"+dress.getName()+"- editado exitosamente");
         }
-        //In case theres no dress with that name in dressList:
-        System.err.println("No hay ningun vestido con el nombre: "+name+" en la base de datos");
-        System.out.println("Revise que el nombre este escrito correctamente");
     }
     
     public void deleteDress() {
-        String name = dressManager.getDressName();
-        
-        for (Dress dress : getDressList()) {
-            if (dress.getName().equalsIgnoreCase(name)) {
-                getDressList().remove(dress);
-                System.out.println("Vestido -"+dress.getName()+"- Eliminado");
-            }
+        Dress dress = dressManager.searchDress();
+        if (dress != null) {
+            getDressList().remove(dress);
+            System.out.println("Vestido -"+dress.getName()+"- Eliminado");
+            fileManager.createJson(dressList);
         }
-        //In case theres no dress with that name in dressList:
-        System.err.println("No hay ningun vestido con el nombre: "+name+" en la base de datos");
-        System.out.println("Revise que el nombre este escrito correctamente");
+
     }
     
+    
     public void displayDressList() {
+        dressList.clear();
+        dressList = fileManager.loadJson(dressList);
+        
         System.out.println("Inventario de vestidos: ");
         System.out.println("-----------------");
         
@@ -80,7 +72,10 @@ public class InventoryManager {
         }
     }
 
-    public List<Dress> getDressList() {
+    /**
+     * @return the dressList
+     */
+    public ArrayList<Dress> getDressList() {
         return dressList;
     }
 }

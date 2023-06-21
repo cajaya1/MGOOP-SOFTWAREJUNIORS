@@ -1,13 +1,10 @@
-package ec.edu.espe.BethsabeBoutique.controller;
-import ec.edu.espe.BethsabeBoutique.controller.InventoryManager;
+package ec.edu.espe.BethsabeBoutique.model;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import ec.edu.espe.BethsabeBoutique.model.Customer;
-import ec.edu.espe.BethsabeBoutique.model.Dress;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,7 +13,6 @@ import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  *

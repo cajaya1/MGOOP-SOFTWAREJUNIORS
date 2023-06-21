@@ -1,7 +1,5 @@
-package ec.edu.espe.BethsabeBoutique.controller;
+package ec.edu.espe.BethsabeBoutique.model;
 
-import ec.edu.espe.BethsabeBoutique.model.Customer;
-import ec.edu.espe.BethsabeBoutique.model.Dress;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,12 +23,12 @@ public class BillingSystem {
         
         try {
             FileWriter writer = new FileWriter("Facturas/"+actualDate+".txt", true);
-            writer.write("Datos del cliente:");
+            writer.write("Datos del cliente:\n");
             writer.write(customer.getName()+"\n");
             writer.write(customer.getIdCard()+"\n");
             writer.write(customer.getEmail()+"\n");
             writer.write(actualDate);
-            writer.write("COMPRAS:");
+            writer.write("\nCOMPRAS\n:");
             int cartIndex = 1;
             for(Dress dressIndex : cart) {
                 writer.write("("+cartIndex+") "+dressIndex.getName() + "--->"+dressIndex.getQuantity()

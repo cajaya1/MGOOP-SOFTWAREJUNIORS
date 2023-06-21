@@ -1,19 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package ec.edu.espe.BethsabeBoutique.controller;
+package ec.edu.espe.BethsabeBoutique.model;
 
-import ec.edu.espe.BethsabeBoutique.model.Dress;
+import ec.edu.espe.BethsabeBoutique.controller.utils.BetterScanner;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
  * @author Caetano Flores, Juniors, DCCO-ESPE
  */
 public class DressManager {
-    Scanner scanner = new Scanner(System.in);
+    BetterScanner scanner = new BetterScanner();
     FileManager fileManager = new FileManager();
     ArrayList<Dress> dressList;
     
@@ -23,19 +18,19 @@ public class DressManager {
     
     public Dress getDressInformation() {
         System.out.print("Ingrese el nombre del vestido: ");
-        String name = scanner.next();
+        String name = scanner.getNoSpacedString();
         
         System.out.print("Ingrese la marca del vestido: ");
-        String brand = scanner.next();
+        String brand = scanner.getNoSpacedString();
         
         System.out.print("Ingrese las medidas del vestido: ");
-        String size = scanner.next();
+        String size = scanner.getNoSpacedString();
         
         System.out.print("Ingrese el precio del vestido: ");
-        float price = scanner.nextFloat();
+        float price = scanner.getValidFloat();
 
         System.out.print("Ingrese la cantidad de vestidos: ");
-        int quantity = scanner.nextInt();
+        int quantity = scanner.getValidInt();
         
         return new Dress(name, brand, size, price, quantity);
     }
@@ -45,7 +40,7 @@ public class DressManager {
     public Dress searchDress() {
         dressList = fileManager.loadJson(dressList);
         System.out.print("Ingrese el nombre del vestido: ");
-        String name = scanner.next();
+        String name = scanner.getNoSpacedString();
         boolean dressFounded = false;
         
         for (Dress dressToSearch : dressList) {
@@ -63,19 +58,19 @@ public class DressManager {
     
     public Dress getUpdatedDressInformation() {
         System.out.print("Enter New Dress Name: ");
-        String name = scanner.next();
+        String name = scanner.getNoSpacedString();
         
         System.out.print("Enter New Dress Brand: ");
-        String brand = scanner.next();
+        String brand = scanner.getNoSpacedString();
         
         System.out.print("Enter New Dress Size: ");
-        String size = scanner.next();
+        String size = scanner.getNoSpacedString();
         
         System.out.print("Enter New Price: ");
-        float price = scanner.nextFloat();
+        float price = scanner.getValidFloat();
         
         System.out.print("Enter New Dress Quantity: ");
-        int quantity = scanner.nextInt();
+        int quantity = scanner.getValidInt();
         
         return new Dress(name, brand, size, price, quantity);
     }

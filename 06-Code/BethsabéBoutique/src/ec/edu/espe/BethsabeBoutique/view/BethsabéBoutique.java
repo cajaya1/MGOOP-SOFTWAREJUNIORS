@@ -1,23 +1,23 @@
 package ec.edu.espe.BethsabeBoutique.view;
-import ec.edu.espe.BethsabeBoutique.controller.InventoryManager;
-import ec.edu.espe.BethsabeBoutique.controller.ReportManager;
-import ec.edu.espe.BethsabeBoutique.controller.ShopingCart;
+import ec.edu.espe.BethsabeBoutique.controller.utils.BetterScanner;
+import ec.edu.espe.BethsabeBoutique.model.InventoryManager;
+import ec.edu.espe.BethsabeBoutique.model.ReportManager;
+import ec.edu.espe.BethsabeBoutique.model.ShopingCart;
 
 /**
  *
  * @author Carlos Jaya,Software Juniors, DCOO-ESPE
  */
 
-import java.util.Scanner;
 
 public class BethsabéBoutique {
-    private Scanner scanner;
+    BetterScanner BetterScanner;
     InventoryManager inventory = new InventoryManager();
     ReportManager report = new ReportManager();
     ShopingCart shopingCart = new ShopingCart();
     
     public BethsabéBoutique() {
-        scanner = new Scanner(System.in);
+        BetterScanner = new BetterScanner();
     }
     
     public void displayMenu() {
@@ -34,7 +34,7 @@ public class BethsabéBoutique {
             System.out.println("0. Salir");
             System.out.print("Escoja una opcion: ");
             
-            menuOption = scanner.nextInt();
+            menuOption = BetterScanner.getValidInt();
             switch (menuOption) {
 
                 case 0 -> System.out.println("Saliendo del programa...");
@@ -59,7 +59,7 @@ public class BethsabéBoutique {
             System.out.println("3. Ver el carrito de compras");
             System.out.println("0. Salir");
             
-            menuOption = scanner.nextInt();
+            menuOption = BetterScanner.getValidInt();
             switch (menuOption) {
 
                 case 0 -> System.out.println("Saliendo del menu...\n");

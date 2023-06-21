@@ -1,16 +1,14 @@
-package ec.edu.espe.BethsabeBoutique.controller;
+package ec.edu.espe.BethsabeBoutique.model;
 
-import ec.edu.espe.BethsabeBoutique.model.Customer;
-import ec.edu.espe.BethsabeBoutique.model.Dress;
+import ec.edu.espe.BethsabeBoutique.controller.utils.BetterScanner;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
  * @author Caetano Flores, Juniors, DCCO-ESPE
  */
 public class SalesManager {
-    Scanner scanner = new Scanner(System.in);
+    BetterScanner BetterScanner = new BetterScanner();
     InventoryManager inventoryManager = new InventoryManager();
     BillingSystem billingSystem = new BillingSystem();
     
@@ -18,11 +16,11 @@ public class SalesManager {
         String name, email, idCard;
         
         System.out.print("Ingrese nombre del cliente: ");
-        name = scanner.next();
+        name = BetterScanner.getNoSpacedString();
         System.out.print("Ingrese correo electronico del cliente: ");
-        email = scanner.next();
+        email = BetterScanner.getNoSpacedString();
         System.out.print("Ingrese cedula cliente: ");
-        idCard = scanner.next();
+        idCard = BetterScanner.getNoSpacedString();
         
         Customer customer = new Customer(name, email, idCard);
         for(Dress dressOnCart : cart) {

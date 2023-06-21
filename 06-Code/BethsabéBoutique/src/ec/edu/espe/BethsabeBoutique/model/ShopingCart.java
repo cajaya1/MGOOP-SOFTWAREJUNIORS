@@ -1,9 +1,8 @@
-package ec.edu.espe.BethsabeBoutique.controller;
+package ec.edu.espe.BethsabeBoutique.model;
 
-import ec.edu.espe.BethsabeBoutique.model.Dress;
-import java.awt.BorderLayout;
+
+import ec.edu.espe.BethsabeBoutique.controller.utils.BetterScanner;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -12,8 +11,7 @@ import java.util.Scanner;
 public class ShopingCart {
     private float totalPrice;
     private ArrayList<Dress> cart;
-    Scanner scanner = new Scanner(System.in);
-    InventoryManager inventoryManager = new InventoryManager();
+    BetterScanner scanner = new BetterScanner();
     DressManager dressManager = new DressManager();
     SalesManager salesManager = new SalesManager();
     
@@ -25,7 +23,7 @@ public class ShopingCart {
         Dress dress = dressManager.searchDress();
         if(dress != null) {
             System.out.println("Ingrese la cantidad: ");
-            int quantity = scanner.nextInt();
+            int quantity = scanner.getValidInt();
 
             Dress dressOnCart = searchOnCart(dress);
 
@@ -47,17 +45,17 @@ public class ShopingCart {
         
         System.out.println("1.Borrar una cantidad");
         System.out.println("2. Borrar todo el carrito");
-        menuOption = scanner.nextInt();
+        menuOption = scanner.getValidInt();
             
         switch (menuOption){
             case 1:
                 printShopingCart();
                 System.out.println("Seleccione el numero del vestido a borrar: ");
-                dressOption = scanner.nextInt();
+                dressOption = scanner.getValidInt();
                 dress = getCart().get(dressOption-1);
                 
                 System.out.println("Ingresa la cantidad a borrar: ");
-                int quantity = scanner.nextInt();
+                int quantity = scanner.getValidInt();
                 quantity = dress.getQuantity() - quantity;
                 if(quantity == 0){
                     cart.remove(dress);
@@ -103,7 +101,7 @@ public class ShopingCart {
         System.out.println("OPCIONES:");
         System.out.println("1.COMPRAR");
         System.out.println("2.SALIR");
-        option = scanner.nextInt();
+        option = scanner.getValidInt();
         switch (option) {
             case 1 -> salesManager.createSale(cart, totalPrice, taxes);
             case 2 -> System.out.println("");

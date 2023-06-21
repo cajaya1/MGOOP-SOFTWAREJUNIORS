@@ -1,10 +1,8 @@
 
-package ec.edu.espe.BethsabeBoutique.controller;
+package ec.edu.espe.BethsabeBoutique.model;
 
-import ec.edu.espe.BethsabeBoutique.model.Dress;
 import java.util.ArrayList;
 import java.time.LocalDate;
-import java.util.Scanner;
 /**
  *
  * @author Carlos Jaya,Software Juniors, DCOO-ESPE
@@ -13,7 +11,6 @@ import java.util.Scanner;
 
 public class InventoryManager {
     private ArrayList<Dress> dressList = new ArrayList<>();
-    Scanner scanner = new Scanner(System.in);
     DressManager dressManager = new DressManager();
     FileManager fileManager = new FileManager();
     

@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.espe.BethsabeBoutique.model;
 
-import ec.edu.espe.BethsabeBoutique.controller.utils.BetterScanner;
+import ec.edu.espe.BethsabeBoutique.controller.BetterScanner;
 import java.util.ArrayList;
 /**
  *

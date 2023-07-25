@@ -17,7 +17,7 @@ public class BillingSystem {
     LocalDate dateOfPurchase;
     
    public void createBill(ArrayList<Dress> cart, Customer customer, float total, float taxes) {
-        //Creates the folder "Reportes" in root 
+        //Creates the folder "Reportes" in root
         File file = new File("Facturas");
         file.mkdir();
         dateOfPurchase = LocalDate.now();

@@ -4,21 +4,21 @@
  */
 package ec.edu.espe.BethsabeBoutique.model;
 
-import ec.edu.espe.BethsabeBoutique.controller.utils.BetterScanner;
+import ec.edu.espe.BethsabeBoutique.controller.BetterScanner;
 import java.util.ArrayList;
 
 /**
  *
  * @author Carlos Jaya,Software Juniors, DCOO-ESPE
  */
-public class ShopingCart {
+public class ShoppingCart {
     private float totalPrice;
     private ArrayList<Dress> cart;
     BetterScanner scanner = new BetterScanner();
     DressManager dressManager = new DressManager();
     SalesManager salesManager = new SalesManager();
     
-    public ShopingCart(){
+    public ShoppingCart(){
         cart = new ArrayList<>();
     }
     

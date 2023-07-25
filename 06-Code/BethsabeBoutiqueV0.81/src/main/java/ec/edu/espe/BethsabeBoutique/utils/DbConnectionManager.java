@@ -1,9 +1,13 @@
-package ec.edu.espe.bethsabeboutique.utils;
+package ec.edu.espe.BethsabeBoutique.utils;
 
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author caeta
+ */
 public class DbConnectionManager {
     MongoClient client;
     public MongoClient connectDb() {
@@ -11,7 +15,7 @@ public class DbConnectionManager {
         try {
             client = MongoClients.create(uri);
         } catch (MongoException e) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos!", "Error", JOptionPane.ERROR_MESSAGE);
+            System.err.println("Error al conectar a MongoDB: " + e.getMessage());
             return null;
         }
         return client;
@@ -21,5 +25,3 @@ public class DbConnectionManager {
         client.close();
     }
 }
-
-

@@ -4,10 +4,11 @@
  */
 package ec.edu.espe.BethsabeBoutique.view;
 
-import ec.edu.espe.BethsabeBoutique.controller.utils.BetterScanner;
+
+import ec.edu.espe.BethsabeBoutique.controller.BetterScanner;
 import ec.edu.espe.BethsabeBoutique.model.InventoryManager;
 import ec.edu.espe.BethsabeBoutique.model.ReportManager;
-import ec.edu.espe.BethsabeBoutique.model.ShopingCart;
+import ec.edu.espe.BethsabeBoutique.model.ShoppingCart;
 
 /**
  *
@@ -17,7 +18,7 @@ public class BethsabéBoutique {
     BetterScanner BetterScanner;
     InventoryManager inventory = new InventoryManager();
     ReportManager report = new ReportManager();
-    ShopingCart shopingCart = new ShopingCart();
+    ShoppingCart shopingCart = new ShoppingCart();
     
     public BethsabéBoutique() {
         BetterScanner = new BetterScanner();

@@ -4,7 +4,7 @@
  */
 package ec.edu.espe.BethsabeBoutique.model;
 
-import ec.edu.espe.BethsabeBoutique.controller.utils.BetterScanner;
+import ec.edu.espe.BethsabeBoutique.controller.BetterScanner;
 import java.util.ArrayList;
 
 /**
